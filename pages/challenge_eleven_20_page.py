@@ -5,6 +5,7 @@ from config.env_config import EnvConfig
 from urllib.parse import urlparse
 import time
 import re
+import os
 
 class ChallengeElevenTwentyPage(BasePage):
     # Định nghĩa locator ở cấp Class                     
@@ -19,6 +20,20 @@ class ChallengeElevenTwentyPage(BasePage):
     CONTENT_IMG_03 = (By.XPATH, "//div[@id='content']/div[@class='row'][3]/div[2]")
     CLOSE_BTN_MODAL = (By.XPATH, "//div[@id='modal']/div[@class='modal']/div[@class='modal-footer']/p")
     HEADER_MODAL = (By.XPATH, "//div[@class='modal-title']/h3[contains(text(), 'modal window')]")
+    MODAL_WINDOW_TITLE = (By.XPATH, "//div[@class='modal-title']/h3")
+    CLOSE_MODAL_WINDOW = (By.XPATH, "//div[@class='modal-footer']/p[contains(text(), 'Close')]")
+    TEXT_FILE_DOWNLOAD = (By.LINK_TEXT, "2026-10-22-acme-some-file.txt")
+    FILE_UPLOAD_INP = (By.ID, "file-upload")
+    UPLOAD_BTN = (By.ID, "file-submit")
+    UPLOAD_SUCCESS_HEAD = (By.XPATH, "//div[@class='example']/h3")
+    UPLOADED_FILES = (By.XPATH, "//div[@class='example']/div[@id='uploaded-files']")
+    FLOAT_MENU = (By.ID, "menu")
+    FRAME_BODY_TEXT = (By.TAG_NAME, "body")
+    FRAME_CONTENT_TEXT = (By.ID, "content")
+    NESTED_FRAME_LINK = (By.LINK_TEXT, "Nested Frames")
+    IFRAME_LINK = (By.LINK_TEXT, "iFrame")
+    IFRAME_INP = (By.ID, "mce_0_ifr")
+    TINY_MCE = (By.ID, "tinymce")
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -31,6 +46,21 @@ class ChallengeElevenTwentyPage(BasePage):
         )
         self.domain_entry_ad = (
             self.env_config.config["base_url"] + self.env_config.config["endpoints"]["entry_ad"]
+        )
+        self.domain_exit_intent = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["exit_intent"]
+        )
+        self.domain_file_downloader = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["file_download"]
+        )
+        self.domain_file_upload = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["file_upload"]
+        )
+        self.domain_floating_menu = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["floating_menu"]
+        )
+        self.domain_frame = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["i_frame"]
         )
 
     def do_dropdown(self):
@@ -82,5 +112,120 @@ class ChallengeElevenTwentyPage(BasePage):
         time.sleep(2)
         self.driver.refresh()
         time.sleep(2)
-        assert self.is_element_visible(self.HEADER_MODAL) == False, "Entry ad test failed"
+        assert self.is_element_invisible(self.HEADER_MODAL), "Entry ad test failed"
         self.logger.info("Entry ad test passed")
+
+    def do_exit_intent(self):
+        self.open_page(self.domain_exit_intent)
+        time.sleep(2)
+        modal_js = """
+        var event = new MouseEvent('mouseleave', {
+            'bubbles': true,
+            'cancelable': true,
+            'clientX': 0,
+            'clientY': -10 
+        });
+        document.documentElement.dispatchEvent(event);
+        """
+        self.execuate_script(modal_js)
+        time.sleep(2)
+        modal_window_title = self.get_text(self.MODAL_WINDOW_TITLE)
+        modal_close = self.find_element(self.CLOSE_MODAL_WINDOW)
+        assert modal_window_title == "THIS IS A MODAL WINDOW", f"Exit intent test failed, Expected 'THIS IS A MODAL WINDOW', but got '{modal_window_title}'"
+        self.logger.info("Exit intent test passed")
+        self.wait_for_visible(self.CLOSE_MODAL_WINDOW)
+        self.click_element(self.CLOSE_MODAL_WINDOW)
+
+    def do_file_downloader(self, download_folder):
+        self.open_page(self.domain_file_downloader)
+        time.sleep(2)
+        self.click_element(self.TEXT_FILE_DOWNLOAD)
+        time.sleep(2)
+        file_name = "2026-10-22-acme-some-file.txt"
+        file_path = os.path.join(download_folder, file_name)
+        if os.path.exists(file_path):
+            self.logger.info("File downloaded successfully")
+        else:
+            self.logger.error("File not downloaded")
+            assert False, "File not downloaded"
+
+    def do_upload_file(self, file_name):
+        self.open_page(self.domain_file_upload)
+        time.sleep(2)
+        file_path = os.path.join(os.getcwd(), 'FileToUpload', file_name)
+        if os.path.exists(file_path):
+            self.logger.info("File exists")
+        else:
+            self.logger.error("File not exists")
+            assert False, "File not exists"
+        self.enter_text(self.FILE_UPLOAD_INP, file_path)
+        time.sleep(2)
+        self.click_element(self.UPLOAD_BTN)
+        time.sleep(2)
+        upload_success_title = self.get_text(self.UPLOAD_SUCCESS_HEAD)
+        uploaded_file = self.get_text(self.UPLOADED_FILES)
+        assert upload_success_title == "File Uploaded!", f"Upload success title is not 'File Uploaded!' but got '{upload_success_title}'"
+        assert file_name in uploaded_file, f"Uploaded file is not '{file_name}' but got '{uploaded_file}'"
+        self.logger.info("Upload file test passed")
+
+    def do_floating_element(self):
+        self.open_page(self.domain_floating_menu)
+        time.sleep(2)
+        assert self.is_element_visible(self.FLOAT_MENU), "Floating menu test failed"
+        float_element_js = """
+        window.scrollTo(0, document.body.scrollHeight);
+        """
+        self.execuate_script(float_element_js)
+        time.sleep(2)
+        assert self.is_element_visible(self.FLOAT_MENU), "Floating menu test failed"
+        self.logger.info("Floating menu test passed")
+
+    def do_frame(self):
+        self.open_page(self.domain_frame)
+        time.sleep(2)
+        self.click_element(self.NESTED_FRAME_LINK)
+        time.sleep(2)
+        self.switch_frame_by_name("frame-top")
+        self.switch_frame_by_name("frame-left")
+        left_content = self.get_text(self.FRAME_BODY_TEXT)
+        assert left_content == "LEFT", f"Left content is not 'LEFT' but got '{left_content}'"
+        time.sleep(2)
+        self.switch_parent_frame()
+        self.switch_frame_by_name("frame-middle")
+        middle_content = self.get_text(self.FRAME_CONTENT_TEXT)
+        assert middle_content == "MIDDLE", f"Middle content is not 'MIDDLE' but got '{middle_content}'"
+        time.sleep(2)
+        self.switch_parent_frame()
+        self.switch_frame_by_name("frame-right")
+        right_content = self.get_text(self.FRAME_BODY_TEXT)
+        assert right_content == "RIGHT", f"Right content is not 'RIGHT' but got '{right_content}'"
+        time.sleep(2)
+        self.switch_default_content()
+        self.switch_frame_by_name("frame-bottom")
+        bottom_content = self.get_text(self.FRAME_BODY_TEXT)
+        assert bottom_content == "BOTTOM", f"Bottom content is not 'BOTTOM' but got '{bottom_content}'"
+        time.sleep(2)
+        self.switch_parent_frame()
+        self.logger.info("Nested Frame test passed")
+        self.open_page(self.domain_frame)
+        time.sleep(2)
+        self.click_element(self.IFRAME_LINK)
+        time.sleep(2)
+        self.wait_for_visible(self.IFRAME_INP)
+        self.switch_frame(self.IFRAME_INP)
+        self.wait_for_visible(self.TINY_MCE)
+        self.clear_text(self.TINY_MCE)
+        test_text = "hello from Selenium"
+        self.enter_text(self.TINY_MCE, test_text)
+        actual_text = self.get_text(self.TINY_MCE)
+        assert actual_text == test_text, f"Iframe content is not '{test_text}' but got '{actual_text}'"
+        self.switch_default_content()
+        self.logger.info("Iframe test passed")
+
+
+
+        
+
+
+
+    

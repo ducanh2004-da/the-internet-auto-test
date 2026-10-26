@@ -1,3 +1,4 @@
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common import actions
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -42,6 +43,12 @@ class BasePage:
         element.clear()
         element.send_keys(text)
 
+    def clear_text(self, locator):
+        self.logger.info("Clearing text")
+        element = self.wait.until(EC.presence_of_element_located(locator))
+        element.clear()
+        self.logger.info("Text cleared")
+
     def get_text(self, locator):
         element = self.wait.until(EC.presence_of_element_located(locator))
         self.logger.info(f"Getting text: {element.text}")
@@ -50,6 +57,14 @@ class BasePage:
     def is_element_visible(self, locator):
         element = self.wait.until(EC.visibility_of_element_located(locator))
         return element.is_displayed()
+    
+    def is_element_invisible(self, locator):
+        try:
+            # invisibility_of_element_located tự động trả về True nếu element ẩn hoặc không tồn tại trong DOM
+            self.wait.until(EC.invisibility_of_element_located(locator))
+            return True
+        except TimeoutException:
+            return False
 
     def is_element_clickable(self, locator):
         element = self.wait.until(EC.element_to_be_clickable(locator))
@@ -100,3 +115,33 @@ class BasePage:
         action = ActionChains(self.driver)
         action.drag_and_drop(source, target).perform()
         self.logger.info("Element dragged and dropped")
+
+    def execuate_script(self, script):
+        self.logger.info("Executing script")
+        self.driver.execute_script(script)
+        self.logger.info("Script executed")
+
+    def switch_frame(self, frame_locator):
+        self.logger.info("Switching to frame")
+        frame = self.find_element(frame_locator)
+        self.driver.switch_to.frame(frame)
+        self.logger.info("Frame switched")
+
+    def switch_frame_by_name(self, frame_name):
+        self.logger.info("Switching to frame by name")
+        self.driver.switch_to.frame(frame_name)
+        self.logger.info("Frame switched by name")
+
+    def switch_frame_by_index(self, frame_index):
+        self.logger.info("Switching to frame by index")
+        self.driver.switch_to.frame(frame_index)
+        self.logger.info("Frame switched by index")
+
+    def switch_parent_frame(self):
+        self.logger.info("Switching to parent frame")
+        self.driver.switch_to.parent_frame()
+        self.logger.info("Parent frame switched")
+    
+    def switch_default_content(self):
+        self.logger.info("Switch to default content")
+        self.driver.switch_to.default_content()

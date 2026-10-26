@@ -22,11 +22,12 @@ class EnvConfig:
                     "dynamic_loading": "/dynamic_loading",
                     "entry_ad": "/entry_ad",
                     "entry_exit": "/entry_exit",
+                    "exit_intent": "/exit_intent",
                     "file_download": "/download",
                     "file_upload": "/upload",
                     "floating_menu": "/floating_menu",
                     "i_frame": "/frames",
-                    "horizontal_slider": "/horizontal_slider"
+                    "geolocation": "/geolocation"
                 }
             }
 
