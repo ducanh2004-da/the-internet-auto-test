@@ -27,7 +27,10 @@ class EnvConfig:
                     "file_upload": "/upload",
                     "floating_menu": "/floating_menu",
                     "i_frame": "/frames",
-                    "geolocation": "/geolocation"
+                    "geolocation": "/geolocation",
+                    "horizontal_slider": "/horizontal_slider",
+                    "javascript_alerts": "/javascript_alerts",
+                    "windows": "/windows"
                 }
             }
 

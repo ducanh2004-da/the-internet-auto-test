@@ -100,6 +100,12 @@ class BasePage:
         alert = self.wait.until(EC.alert_is_present())
         self.logger.info(f"Alert text: {alert.text}")
         return alert.text
+    
+    def enter_text_alert(self, text):
+        self.logger.info("Entering text to alert")
+        alert = self.wait.until(EC.alert_is_present())
+        alert.send_keys(text)
+        self.logger.info("Text entered to alert")
 
     def click_and_type(self, locator, text):
         self.logger.info("Clicking and typing")
@@ -145,3 +151,17 @@ class BasePage:
     def switch_default_content(self):
         self.logger.info("Switch to default content")
         self.driver.switch_to.default_content()
+
+    def switch_new_window(self):
+        self.logger.info("Switching to new window")
+        all_windows = self.driver.window_handles
+        new_window = all_windows[-1]
+        self.driver.switch_to.window(new_window)
+        self.logger.info("Switched to new window")
+
+    def back_to_origin_window(self):
+        self.logger.info("Back to origin window")
+        all_windows = self.driver.window_handles
+        origin_window = all_windows[0]
+        self.driver.switch_to.window(origin_window)
+        self.logger.info("Back to origin window")
