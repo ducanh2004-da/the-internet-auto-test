@@ -165,3 +165,11 @@ class BasePage:
         origin_window = all_windows[0]
         self.driver.switch_to.window(origin_window)
         self.logger.info("Back to origin window")
+    
+    def get_location(self, locator):
+        element = self.find_element(locator)
+        return element.location
+    
+    def get_size(self, locator):
+        element = self.find_element(locator)
+        return element.size

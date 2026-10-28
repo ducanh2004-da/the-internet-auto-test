@@ -20,6 +20,12 @@ class ChallengeTwentyThirtyPage(BasePage):
     JS_PROMPT_BTN = (By.XPATH, "//button[text()='Click for JS Prompt']")
     CLICK_HERE_BTN = (By.LINK_TEXT, "Click Here")
     NEW_WINDOW_TEXT = (By.XPATH, "//h3[text()='New Window']")
+    MENU_SHIFTING_LINK = (By.XPATH, "//a[@href='/shifting_content/menu']")
+    IMAGE_SHIFTING_LINK = (By.XPATH, "//a[@href='/shifting_content/image']")
+    LIST_SHIFTING_LINK = (By.XPATH, "//a[@href='/shifting_content/list']")
+    SHIFTING_GALLERY_LINK = (By.LINK_TEXT, "Gallery")
+    SHIFTING_IMAGE = (By.XPATH, "//img[@class='shift']")
+    
 
     def __init__(self, driver):
         super().__init__(driver)
@@ -36,6 +42,10 @@ class ChallengeTwentyThirtyPage(BasePage):
         self.domain_windows = (
             self.env_config.config["base_url"] + self.env_config.config["endpoints"]["windows"]
         )
+        self.domain_shifting_content = (
+            self.env_config.config["base_url"] + self.env_config.config["endpoints"]["shifting_content"]
+        )
+       
     
     def do_geolocation(self):
         self.open_page(self.domain_geolocation)
@@ -85,6 +95,29 @@ class ChallengeTwentyThirtyPage(BasePage):
         self.back_to_origin_window()
         time.sleep(2)
         self.logger.info("Switch window test passed")
+
+    def do_shifting_content(self):
+        self.open_page(self.domain_shifting_content)
+        time.sleep(2)
+        self.click_element(self.MENU_SHIFTING_LINK)
+        initial_location_gallery = self.get_location(self.SHIFTING_GALLERY_LINK)
+        self.open_page("https://the-internet.herokuapp.com/shifting_content/menu?mode=random&pixel_shift=100")
+        time.sleep(0.3)
+        later_location_gallery = self.get_location(self.SHIFTING_GALLERY_LINK)
+        assert initial_location_gallery['x'] != later_location_gallery['x'], f"Menu not shifting, Initial: {initial_location_gallery['x']}, Later: {later_location_gallery['x']}"
+        time.sleep(2)
+        self.logger.info("Shifting content test passed")
+        self.open_page(self.domain_shifting_content)
+        self.click_element(self.IMAGE_SHIFTING_LINK)
+        initial_location_image = self.get_location(self.SHIFTING_IMAGE)
+        self.open_page("https://the-internet.herokuapp.com/shifting_content/image?mode=random&pixel_shift=100")
+        time.sleep(0.3)
+        later_location_image = self.get_location(self.SHIFTING_IMAGE)
+        assert initial_location_image['x'] != later_location_image['x'], f"Image not shifting, Initial: {initial_location_image['x']}, Later: {later_location_image['x']}"
+        time.sleep(2)
+        self.logger.info("Shifting image test passed")
+        
+        
 
 
 

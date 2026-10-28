@@ -30,7 +30,8 @@ class EnvConfig:
                     "geolocation": "/geolocation",
                     "horizontal_slider": "/horizontal_slider",
                     "javascript_alerts": "/javascript_alerts",
-                    "windows": "/windows"
+                    "windows": "/windows",
+                    "shifting_content": "/shifting_content"
                 }
             }
 

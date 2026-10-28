@@ -3,8 +3,6 @@ from selenium import webdriver
 
 @pytest.fixture()
 def setup():
-    # Thêm chữ 'r' (raw string) trước chuỗi đường dẫn Windows để Python 
-    # không hiểu nhầm các ký tự \A, \S, \d thành ký tự đặc biệt (escape characters).
     download_folder = r"D:\Auto_Test\Selenium_Python\download"
     
     options = webdriver.ChromeOptions()
