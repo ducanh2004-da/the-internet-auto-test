@@ -33,10 +33,10 @@ class TestChallengeOneTen:
     def test_challenge_20_30(self, setup):
         driver, download_folder = setup
         challenge_20_30_page = ChallengeTwentyThirtyPage(driver)
-        # challenge_20_30_page.do_geolocation()
-        # challenge_20_30_page.do_horizontal_slider()
-        # challenge_20_30_page.do_javascript_alerts()
-        # challenge_20_30_page.do_switch_window()
+        challenge_20_30_page.do_geolocation()
+        challenge_20_30_page.do_horizontal_slider()
+        challenge_20_30_page.do_javascript_alerts()
+        challenge_20_30_page.do_switch_window()
         challenge_20_30_page.do_shifting_content()
 
         
