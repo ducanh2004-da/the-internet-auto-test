@@ -1,0 +1,24 @@
+2026-10-30 06:49:22 [INFO] Clicking on element
+2026-10-30 06:49:22 [INFO] Element clicked
+2026-10-30 06:49:24 [INFO] Clicking on element
+2026-10-30 06:49:24 [INFO] Element clicked
+2026-10-30 06:49:28 [INFO] Dropdown test passed
+2026-10-30 06:49:30 [INFO] Getting text: Suscipit velit voluptates impedit nostrum consectetur laboriosam vero esse in aliquid ab veniam dolor aut ipsam nihil aspernatur velit aut ea qui voluptatum ad sapiente sint non minus et autem.
+2026-10-30 06:49:30 [INFO] Getting text: Enim maxime ea tempore est praesentium quasi accusantium omnis fuga nisi voluptates mollitia rerum nulla maiores qui quo ut recusandae eligendi temporibus rem quia et voluptate et deserunt dolore facere.
+2026-10-30 06:49:30 [INFO] Getting text: Minima ipsa dignissimos quis et laboriosam ad non itaque voluptates sequi vitae et at ducimus ratione non ex reiciendis sint amet quibusdam quaerat et assumenda quas quam error est nisi.
+2026-10-30 06:49:30 [INFO] All images are visible
+2026-10-30 06:49:30 [INFO] Getting text: Quia sapiente corrupti tempore veniam deserunt sed accusantium voluptatem impedit eligendi delectus non sed sit vel et autem asperiores est repudiandae natus fugit cupiditate vel harum reprehenderit animi rerum illo.
+2026-10-30 06:49:30 [INFO] Getting text: Dolorum molestias minus perferendis quo atque tempora adipisci esse dolores magni qui veniam culpa perspiciatis error est maiores ipsum iusto velit dolor consectetur molestiae iste nam amet est blanditiis id.
+2026-10-30 06:49:30 [INFO] Getting text: Enim et perferendis et est ut rerum voluptate ullam commodi ipsum ut molestiae sunt dolores quos autem laudantium asperiores excepturi et pariatur porro sit praesentium eaque id dolorum ad blanditiis.
+2026-10-30 06:49:30 [INFO] All images are visible
+2026-10-30 06:49:30 [INFO] Dynamic content test passed
+2026-10-30 06:49:32 [INFO] Clicking on element
+2026-10-30 06:49:32 [INFO] Element clicked
+2026-10-30 06:49:36 [INFO] Entry ad test passed
+2026-10-30 06:49:38 [INFO] Executing script
+2026-10-30 06:49:38 [INFO] Script executed
+2026-10-30 06:49:41 [INFO] Getting text: THIS IS A MODAL WINDOW
+2026-10-30 06:49:41 [INFO] Exit intent test passed
+2026-10-30 06:49:41 [INFO] Clicking on element
+2026-10-30 06:49:41 [INFO] Element clicked
+2026-10-30 06:49:43 [INFO] Clicking on element

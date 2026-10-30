@@ -1,0 +1,24 @@
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Dropdown test passed
+INFO     AutomationTest:logger.py:31 Getting text: Suscipit velit voluptates impedit nostrum consectetur laboriosam vero esse in aliquid ab veniam dolor aut ipsam nihil aspernatur velit aut ea qui voluptatum ad sapiente sint non minus et autem.
+INFO     AutomationTest:logger.py:31 Getting text: Enim maxime ea tempore est praesentium quasi accusantium omnis fuga nisi voluptates mollitia rerum nulla maiores qui quo ut recusandae eligendi temporibus rem quia et voluptate et deserunt dolore facere.
+INFO     AutomationTest:logger.py:31 Getting text: Minima ipsa dignissimos quis et laboriosam ad non itaque voluptates sequi vitae et at ducimus ratione non ex reiciendis sint amet quibusdam quaerat et assumenda quas quam error est nisi.
+INFO     AutomationTest:logger.py:31 All images are visible
+INFO     AutomationTest:logger.py:31 Getting text: Quia sapiente corrupti tempore veniam deserunt sed accusantium voluptatem impedit eligendi delectus non sed sit vel et autem asperiores est repudiandae natus fugit cupiditate vel harum reprehenderit animi rerum illo.
+INFO     AutomationTest:logger.py:31 Getting text: Dolorum molestias minus perferendis quo atque tempora adipisci esse dolores magni qui veniam culpa perspiciatis error est maiores ipsum iusto velit dolor consectetur molestiae iste nam amet est blanditiis id.
+INFO     AutomationTest:logger.py:31 Getting text: Enim et perferendis et est ut rerum voluptate ullam commodi ipsum ut molestiae sunt dolores quos autem laudantium asperiores excepturi et pariatur porro sit praesentium eaque id dolorum ad blanditiis.
+INFO     AutomationTest:logger.py:31 All images are visible
+INFO     AutomationTest:logger.py:31 Dynamic content test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Entry ad test passed
+INFO     AutomationTest:logger.py:31 Executing script
+INFO     AutomationTest:logger.py:31 Script executed
+INFO     AutomationTest:logger.py:31 Getting text: THIS IS A MODAL WINDOW
+INFO     AutomationTest:logger.py:31 Exit intent test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Clicking on element

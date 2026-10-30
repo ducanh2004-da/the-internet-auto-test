@@ -1,0 +1,4 @@
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Number of broken images: 2
+INFO     AutomationTest:logger.py:31 Clicking at coordinate

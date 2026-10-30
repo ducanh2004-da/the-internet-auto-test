@@ -1,0 +1,4 @@
+2026-10-30 06:49:12 [INFO] Clicking on element
+2026-10-30 06:49:13 [INFO] Element clicked
+2026-10-30 06:49:17 [INFO] Number of broken images: 2
+2026-10-30 06:49:19 [INFO] Clicking at coordinate

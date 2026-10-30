@@ -1,0 +1,33 @@
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Getting text: 38.7610033
+INFO     AutomationTest:logger.py:31 Getting text: -78.0766036
+INFO     AutomationTest:logger.py:31 Geolocation test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Getting text: 3
+INFO     AutomationTest:logger.py:31 Horizontal slider test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Accepting alert
+INFO     AutomationTest:logger.py:31 Alert accepted
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Dismissing alert
+INFO     AutomationTest:logger.py:31 Alert dismissed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Entering text to alert
+INFO     AutomationTest:logger.py:31 Text entered to alert
+INFO     AutomationTest:logger.py:31 Accepting alert
+INFO     AutomationTest:logger.py:31 Alert accepted
+INFO     AutomationTest:logger.py:31 JavaScript alerts test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Switching to new window
+INFO     AutomationTest:logger.py:31 Switched to new window
+INFO     AutomationTest:logger.py:31 Back to origin window
+INFO     AutomationTest:logger.py:31 Back to origin window
+INFO     AutomationTest:logger.py:31 Switch window test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
