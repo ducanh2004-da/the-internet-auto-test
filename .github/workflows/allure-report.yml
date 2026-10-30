@@ -35,16 +35,14 @@ jobs:
         continue-on-error: true
         run: pytest --alluredir=reports
 
-      - name: Generate Allure Report
-        uses: simple-elf/allure-report-action@v1.9
+      - name: Install Allure Commandline
         if: always()
-        id: allure-report
-        with:
-          allure_results: reports
-          gh_pages: gh-pages
-          allure_report: allure-report
-          allure_history: allure-history
-          keep_reports: 20
+        run: npm install -g allure-commandline
+
+      - name: Generate Allure Report
+        if: always()
+        # Lệnh này lấy data từ thư mục 'reports' và build ra web HTML tại thư mục 'allure-report'
+        run: allure generate reports -o allure-report --clean
 
       - name: Deploy Report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -52,4 +50,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: allure-history
+          publish_dir: allure-report
