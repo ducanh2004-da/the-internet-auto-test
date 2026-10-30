@@ -102,7 +102,7 @@ class ChallengeTwentyThirtyPage(BasePage):
         self.click_element(self.MENU_SHIFTING_LINK)
         initial_location_gallery = self.get_location(self.SHIFTING_GALLERY_LINK)
         self.open_page("https://the-internet.herokuapp.com/shifting_content/menu?mode=random&pixel_shift=100")
-        time.sleep(0.3)
+        time.sleep(1)
         later_location_gallery = self.get_location(self.SHIFTING_GALLERY_LINK)
         assert initial_location_gallery['x'] != later_location_gallery['x'], f"Menu not shifting, Initial: {initial_location_gallery['x']}, Later: {later_location_gallery['x']}"
         time.sleep(2)
@@ -111,7 +111,7 @@ class ChallengeTwentyThirtyPage(BasePage):
         self.click_element(self.IMAGE_SHIFTING_LINK)
         initial_location_image = self.get_location(self.SHIFTING_IMAGE)
         self.open_page("https://the-internet.herokuapp.com/shifting_content/image?mode=random&pixel_shift=100")
-        time.sleep(0.3)
+        time.sleep(1)
         later_location_image = self.get_location(self.SHIFTING_IMAGE)
         assert initial_location_image['x'] != later_location_image['x'], f"Image not shifting, Initial: {initial_location_image['x']}, Later: {later_location_image['x']}"
         time.sleep(2)
