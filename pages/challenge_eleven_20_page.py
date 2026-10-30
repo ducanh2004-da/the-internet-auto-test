@@ -138,32 +138,43 @@ class ChallengeElevenTwentyPage(BasePage):
 
     def do_file_downloader(self, download_folder):
         self.open_page(self.domain_file_downloader)
-        time.sleep(2)
         self.click_element(self.TEXT_FILE_DOWNLOAD)
-        time.sleep(2)
+        
         file_name = "2026-10-22-acme-some-file.txt"
         file_path = os.path.join(download_folder, file_name)
-        if os.path.exists(file_path):
-            self.logger.info("File downloaded successfully")
+        
+        timeout = 15
+        for i in range(timeout):
+            if os.path.exists(file_path):
+                self.logger.info(f"File downloaded successfully at: {file_path}")
+                break
+            time.sleep(1) 
         else:
-            self.logger.error("File not downloaded")
+            # Nếu hết 15 vòng lặp (15s) mà vẫn không thấy file
+            self.logger.error(f"File not downloaded after {timeout} seconds")
             assert False, "File not downloaded"
 
     def do_upload_file(self, file_name):
         self.open_page(self.domain_file_upload)
-        time.sleep(2)
-        file_path = os.path.join(os.getcwd(), 'FileToUpload', file_name)
+        
+        # Dùng os.getcwd() kết hợp abspath để đảm bảo đường dẫn chuẩn xác trên Linux
+        root_dir = os.getcwd()
+        file_path = os.path.abspath(os.path.join(root_dir, 'FileToUpload', file_name))
+        
         if os.path.exists(file_path):
-            self.logger.info("File exists")
+            self.logger.info(f"File exists at: {file_path}")
         else:
-            self.logger.error("File not exists")
-            assert False, "File not exists"
+            self.logger.error(f"File not exists at: {file_path}")
+            assert False, f"File không tồn tại để upload: {file_path}"
+            
         self.enter_text(self.FILE_UPLOAD_INP, file_path)
-        time.sleep(2)
         self.click_element(self.UPLOAD_BTN)
+        
         time.sleep(2)
+        
         upload_success_title = self.get_text(self.UPLOAD_SUCCESS_HEAD)
         uploaded_file = self.get_text(self.UPLOADED_FILES)
+        
         assert upload_success_title == "File Uploaded!", f"Upload success title is not 'File Uploaded!' but got '{upload_success_title}'"
         assert file_name in uploaded_file, f"Uploaded file is not '{file_name}' but got '{uploaded_file}'"
         self.logger.info("Upload file test passed")

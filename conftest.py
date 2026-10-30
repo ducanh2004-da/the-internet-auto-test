@@ -1,6 +1,7 @@
 import pytest
 import allure
 from selenium import webdriver
+import os
 
 # 1. Thêm hook để lấy kết quả (passed/failed) của test case
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
@@ -12,16 +13,20 @@ def pytest_runtest_makereport(item, call):
 # 2. Truyền tham số request vào fixture setup
 @pytest.fixture()
 def setup(request):
-    download_folder = r"D:\Auto_Test\Selenium_Python\download"
+    current_dir = os.getcwd()
+    download_folder = os.path.join(current_dir, "download")
+    
+    # Đảm bảo thư mục tự động được tạo nếu chưa tồn tại
+    os.makedirs(download_folder, exist_ok=True)
     
     options = webdriver.ChromeOptions()
     
     # Cấu hình prefs để ép Chrome tải file về đúng thư mục
     prefs = {
-        "download.default_directory": download_folder, 
-        "download.prompt_for_download": False,        
+        "download.default_directory": download_folder,
+        "download.prompt_for_download": False,
         "download.directory_upgrade": True,
-        "safebrowsing.enabled": True,                  
+        "safebrowsing.enabled": True,
         "profile.default_content_setting_values.geolocation": 1
     }
     options.add_experimental_option("prefs", prefs)
