@@ -1,7 +1,7 @@
 INFO     AutomationTest:logger.py:31 Clicking on element
 INFO     AutomationTest:logger.py:31 Element clicked
-INFO     AutomationTest:logger.py:31 Getting text: 38.7610033
-INFO     AutomationTest:logger.py:31 Getting text: -78.0766036
+INFO     AutomationTest:logger.py:31 Getting text: 41.8643968
+INFO     AutomationTest:logger.py:31 Getting text: -87.6314624
 INFO     AutomationTest:logger.py:31 Geolocation test passed
 INFO     AutomationTest:logger.py:31 Clicking on element
 INFO     AutomationTest:logger.py:31 Element clicked
@@ -31,3 +31,7 @@ INFO     AutomationTest:logger.py:31 Back to origin window
 INFO     AutomationTest:logger.py:31 Switch window test passed
 INFO     AutomationTest:logger.py:31 Clicking on element
 INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Shifting content test passed
+INFO     AutomationTest:logger.py:31 Clicking on element
+INFO     AutomationTest:logger.py:31 Element clicked
+INFO     AutomationTest:logger.py:31 Shifting image test passed

@@ -1,0 +1,37 @@
+2026-10-30 07:04:13 [INFO] Clicking on element
+2026-10-30 07:04:13 [INFO] Element clicked
+2026-10-30 07:04:13 [INFO] Getting text: 41.8643968
+2026-10-30 07:04:13 [INFO] Getting text: -87.6314624
+2026-10-30 07:04:13 [INFO] Geolocation test passed
+2026-10-30 07:04:15 [INFO] Clicking on element
+2026-10-30 07:04:15 [INFO] Element clicked
+2026-10-30 07:04:15 [INFO] Getting text: 3
+2026-10-30 07:04:15 [INFO] Horizontal slider test passed
+2026-10-30 07:04:15 [INFO] Clicking on element
+2026-10-30 07:04:15 [INFO] Element clicked
+2026-10-30 07:04:17 [INFO] Accepting alert
+2026-10-30 07:04:17 [INFO] Alert accepted
+2026-10-30 07:04:17 [INFO] Clicking on element
+2026-10-30 07:04:18 [INFO] Element clicked
+2026-10-30 07:04:20 [INFO] Dismissing alert
+2026-10-30 07:04:20 [INFO] Alert dismissed
+2026-10-30 07:04:20 [INFO] Clicking on element
+2026-10-30 07:04:20 [INFO] Element clicked
+2026-10-30 07:04:22 [INFO] Entering text to alert
+2026-10-30 07:04:22 [INFO] Text entered to alert
+2026-10-30 07:04:24 [INFO] Accepting alert
+2026-10-30 07:04:24 [INFO] Alert accepted
+2026-10-30 07:04:26 [INFO] JavaScript alerts test passed
+2026-10-30 07:04:26 [INFO] Clicking on element
+2026-10-30 07:04:26 [INFO] Element clicked
+2026-10-30 07:04:28 [INFO] Switching to new window
+2026-10-30 07:04:28 [INFO] Switched to new window
+2026-10-30 07:04:30 [INFO] Back to origin window
+2026-10-30 07:04:30 [INFO] Back to origin window
+2026-10-30 07:04:32 [INFO] Switch window test passed
+2026-10-30 07:04:34 [INFO] Clicking on element
+2026-10-30 07:04:34 [INFO] Element clicked
+2026-10-30 07:04:38 [INFO] Shifting content test passed
+2026-10-30 07:04:38 [INFO] Clicking on element
+2026-10-30 07:04:38 [INFO] Element clicked
+2026-10-30 07:04:42 [INFO] Shifting image test passed
